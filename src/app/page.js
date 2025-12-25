@@ -21,11 +21,36 @@ export default function Home() {
       alert("restid set to 1 in localStorage.");
     router.push("/orders");
       
-    } else if (email === "sno" && password === "12345") {
+    } 
+    else if (email === "knl" && password === "12345") {
+      localStorage.setItem("restid", "2");
+      localStorage.setItem("restlocation", "https://maps.app.goo.gl/hkS6Hha1cetHDUE7A");
+      setRestId("2");
+      alert("restid set to 2 in localStorage.");
+      router.push("/orders");
+    }
+    
+    
+    else if (email === "sno" && password === "12345") {
       localStorage.setItem("restid", "3");
       localStorage.setItem("restlocation", "https://maps.app.goo.gl/hkS6Hha1cetHDUE7A");
       setRestId("3");
-      alert("restid set to 1 in localStorage.");
+      alert("restid set to 3 in localStorage.");
+      router.push("/orders");
+    }
+
+    else if (email === "bro" && password === "12345") {
+      localStorage.setItem("restid", "5");
+      localStorage.setItem("restlocation", "https://maps.app.goo.gl/hkS6Hha1cetHDUE7A");
+      setRestId("5");
+      alert("restid set to 4 in localStorage.");
+      router.push("/orders");
+    }
+    else if (email === "lanjesh" && password === "12345") {
+      localStorage.setItem("restid", "4");
+      localStorage.setItem("restlocation", "https://maps.app.goo.gl/hkS6Hha1cetHDUE7A");
+      setRestId("4");
+      alert("restid set to 4 in localStorage.");
       router.push("/orders");
     }
   };
