@@ -18,7 +18,7 @@ export default function InvoicePage() {
         setTimeout(() => window.print(), 500);
       } catch (err) {
         console.error(err);
-        alert("Failed to load invoice");
+        alert("Failed invoice");
       }
     };
 
