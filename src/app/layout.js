@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
+// Fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,16 +15,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// ✅ Fixed: Move themeColor to viewport (required in Next.js 14+)
+// ✅ Required in Next.js 14+: themeColor goes here (fixes the warning)
 export const viewport = {
-  themeColor: "#000000", // or any color you want
+  themeColor: "#000000", // change to your brand color if needed
 };
 
-// ✅ Keep metadata clean (no themeColor here anymore)
+// Metadata – keep manifest reference (but we'll fix loading below)
 export const metadata = {
   title: "RealDel – Restaurant Dashboard",
   description: "Manage your restaurant orders with instant notifications",
-  manifest: "/manifest.webmanifest", // This will work if file is in /public
+  manifest: "/manifest.webmanifest",
   icons: [
     { rel: "icon", url: "/icons/icon-192x192.png" },
     { rel: "apple-touch-icon", url: "/icons/icon-192x192.png" },
@@ -34,11 +35,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head />
+      <head>
+        {/* Optional: Force PWA install prompt in some cases */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
 
-        {/* Toast notifications for when app is open */}
+        {/* Toast notifications */}
         <Toaster
           position="top-center"
           reverseOrder={false}
