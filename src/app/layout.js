@@ -1,4 +1,4 @@
-// app/layout.js  (JavaScript file)
+// app/layout.js
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -14,15 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ Fixed: Move themeColor to viewport (required in Next.js 14+)
+export const viewport = {
+  themeColor: "#000000", // or any color you want
+};
+
+// ✅ Keep metadata clean (no themeColor here anymore)
 export const metadata = {
   title: "RealDel – Restaurant Dashboard",
   description: "Manage your restaurant orders with instant notifications",
-  manifest: "/manifest.webmanifest",
+  manifest: "/manifest.webmanifest", // This will work if file is in /public
   icons: [
-    { rel: "icon", url: "/icon-192x192.png" },
-    { rel: "apple-touch-icon", url: "/icon-192x192.png" },
+    { rel: "icon", url: "/icons/icon-192x192.png" },
+    { rel: "apple-touch-icon", url: "/icons/icon-192x192.png" },
+    { rel: "icon", url: "/icons/icon-512x512.png", sizes: "512x512" },
   ],
-  themeColor: "#000000",
 };
 
 export default function RootLayout({ children }) {
@@ -31,6 +37,8 @@ export default function RootLayout({ children }) {
       <head />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+
+        {/* Toast notifications for when app is open */}
         <Toaster
           position="top-center"
           reverseOrder={false}
