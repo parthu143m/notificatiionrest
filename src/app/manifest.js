@@ -1,4 +1,5 @@
 // app/manifest.js
+
 export default function manifest() {
   return {
     name: "RealDel Restaurant Dashboard",
