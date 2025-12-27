@@ -1,7 +1,7 @@
 // app/api/subscribe-to-topic/route.js
 
 import { NextResponse } from "next/server";
-import admin from "@/lib/firebase-admin";
+import admin from "../../../../lib/firebase-admin";
 
 export async function POST(request) {
   try {
